@@ -74,24 +74,24 @@ class LemonadeStand:
         self._menu = {}  # dictionary of MenuItem objects
         self._sales_record = []  # list of SalesForDay objects
 
-   def get_name(self):
-       """
-       Returns the name of the lemonade stand.
-       """
-       return self._name
+    def get_name(self):
+        """
+        Returns the name of the lemonade stand.
+        """
+        return self._name
 
-   def add_menu_item(self, menu_item):
-       """
-       Adds a menu item to the lemonade stand.
-       """
-       self._menu[menu_item.get_name()] = menu_item
+    def add_menu_item(self, menu_item):
+        """
+        Adds a menu item to the lemonade stand.
+        """
+        self._menu[menu_item.get_name()] = menu_item
 
     def enter_sales_for_today(self, sales_dict):
         """
         Records the sales for the current day. Raises an InvalidSalesItemError if an item in the sales
         is not found in the menu.
         """
-        for item in sales_dict():
+        for item in sales_dict:
             if item not in self._menu:
                 raise InvalidSalesItemError(f"'{item}' not in the menu")
 
@@ -106,7 +106,7 @@ class LemonadeStand:
             if record.get_day() == day:
                 sales_dict = record.get_sales_dict()
                 return sales_dict.get(item_name, 0)
-            return 0
+        return 0
 
     def total_sales_for_menu_item(self, item_name):
         """
@@ -155,7 +155,7 @@ def main ():
     stand.add_menu_item(item3) # Add cookie to the menu for 'Lemons R Us'
 
 # Sales dictionary
-    day_0_sales = {'lemonade': 5, 'cookie': 2, 'not_in_the_menu ': 1}
+    day_0_sales = {'lemonade': 5, 'cookie': 2, 'not_in_the_menu': 1}
 
 # Try/except block for invalid sales
     try:
@@ -163,5 +163,5 @@ def main ():
     except InvalidSalesItemError as e:
         print(f'Error: {e}')
 
- if __name__ == '__main__':
-     main()
+if __name__ == '__main__':
+    main()
