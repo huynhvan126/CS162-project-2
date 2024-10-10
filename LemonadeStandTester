@@ -1,21 +1,20 @@
 # Author: Van Huynh
 # GitHub username: huynhvan126
 # Date: 10/09/2024
-# Description: writing unit tests for classes
+# Description: writing unit tests for Lemonstand classes
 
 import unittest
 from LemonadeStand import MenuItem, SalesForDay, LemonadeStand, InvalidSalesItemError
 
 class TestLemonadeStand(unittest.TestCase):
     """
-       Unit tests for the LemonadeStand class, testing various functionalities such as adding menu items,
-       handling sales, and calculating total sales and profit.
-       """
+    Unit tests for the LemonadeStand class, testing various functionalities such as adding menu items,
+    handling sales, and calculating total sales and profit.
+    """
 
     def setUp(self):
         """
         Set up the test environment by creating a LemonadeStand object with two menu items: lemonade and cookie.
-        This method is run before each individual test to ensure a clean state.
         """
         self.stand = LemonadeStand("Lemons R Us")
         self.item1 = MenuItem('lemonade', 0.5, 1.5)
