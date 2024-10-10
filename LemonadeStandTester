@@ -1,7 +1,7 @@
 # Author: Van Huynh
 # GitHub username: huynhvan126
 # Date: 10/09/2024
-# Description: writing unit tests for Lemonstand classes
+# Description: writing unit tests for lemon stand classes
 
 import unittest
 from LemonadeStand import MenuItem, SalesForDay, LemonadeStand, InvalidSalesItemError
@@ -68,7 +68,6 @@ class TestLemonadeStand(unittest.TestCase):
         self.stand.enter_sales_for_today(sales)
         profit = (1.5 - 0.5) * 5  # profit per lemonade is $1.00
         self.assertEqual(self.stand.total_profit_for_menu_item('lemonade'), profit)
-
 
 if __name__ == "__main__":
     unittest.main()
