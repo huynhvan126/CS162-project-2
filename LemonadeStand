@@ -11,10 +11,6 @@ class InvalidSalesItemError(Exception):
 class MenuItem:
     """
     Represents a menu item with a name, wholesale cost, and selling price.
-    Attributes:
-            _name (str): The name of the menu item.
-            _wholesale_cost (float): The wholesale cost of the menu item.
-            _selling_price (float): The selling price of the menu item.
     """
     def __init__(self, name, wholesale_cost, selling_price):
         """
@@ -45,16 +41,10 @@ class MenuItem:
 class SalesForDay:
     """
     Represents the sales data for a specific day.
-    Attributes:
-            _day (int): The day number.
-            _sales_dict (dict): A dictionary with the sales of each item for the day.
     """
     def __init__(self, day, sales_dict):
         """
         Initializes a SalesForDay object for the given day with the sales data.
-        Args:
-            day (int): The day number.
-            sales_dict (dict): A dictionary where the keys are item names and the values are quantities sold.
         """
         self._day = day
         self._sales_dict = sales_dict
@@ -74,17 +64,10 @@ class SalesForDay:
 class LemonadeStand:
     """
     Represents a lemonade stand that tracks menu items and daily sales.
-    Attributes:
-            _name (str): The name of the lemonade stand.
-            _current_day (int): The current day for recording sales.
-            _menu (dict): A dictionary mapping item names to MenuItem objects.
-            _sales_record (list): A list of SalesForDay objects representing sales for each day.
     """
     def __init__(self, name):
         """
         Initializes a LemonadeStand with the provided name and empty menu and sales record.
-        Args:
-            name (str): The name of the lemonade stand.
         """
         self._name = name
         self._current_day = 0
@@ -100,8 +83,6 @@ class LemonadeStand:
    def add_menu_item(self, menu_item):
        """
        Adds a menu item to the lemonade stand.
-       Args:
-            menu_item (MenuItem): The MenuItem object to add to the menu.
        """
        self._menu[menu_item.get_name()] = menu_item
 
@@ -109,10 +90,6 @@ class LemonadeStand:
         """
         Records the sales for the current day. Raises an InvalidSalesItemError if an item in the sales
         is not found in the menu.
-        Args:
-            sales_dict (dict): A dictionary where the keys are item names and the values are quantities sold.
-        Raises:
-            InvalidSalesItemError: If a sales item is not found in the menu.
         """
         for item in sales_dict():
             if item not in self._menu:
@@ -124,11 +101,6 @@ class LemonadeStand:
     def sales_of_menu_item_for_day(self, day, item_name):
         """
         Returns the quantity of a specific menu item sold on a specific day.
-        Args:
-            day (int): The day number.
-            item_name (str): The name of the menu item.
-        Returns:
-            int: The quantity of the item sold on the given day. Returns 0 if the item was not sold.
         """
         for record in self._sales_record:
             if record.get_day() == day:
@@ -139,10 +111,6 @@ class LemonadeStand:
     def total_sales_for_menu_item(self, item_name):
         """
         Returns the total quantity of a specific menu item sold across all days.
-        Args:
-            item_name (str): The name of the menu item.
-        Returns:
-            int: The total quantity of the item sold.
         """
         total_sales = 0
         for record in self._sales_record:
@@ -153,10 +121,6 @@ class LemonadeStand:
     def total_profit_for_menu_item(self, item_name):
         """
         Calculates the total profit for a specific menu item based on its wholesale cost and selling price.
-        Args:
-            item_name (str): The name of the menu item.
-        Returns:
-            float: The total profit from the sale of the menu item. Returns 0 if the item is not in the menu.
         """
         menu_item = self._menu.get(item_name)
         if not menu_item:
@@ -169,8 +133,6 @@ class LemonadeStand:
     def total_profit_for_stand(self):
         """
         Calculates the total profit for the lemonade stand by summing the profits of all menu items.
-        Returns:
-            float: The total profit for the lemonade stand.
         """
         total_profit = 0
         for item_name in self._menu:
